@@ -1,5 +1,5 @@
-sourceUrl = "https://github.com/prplrs/test-src"
-destinationUrl = "https://github.com/prplrs/test-dest"
+sourceUrl = "https://github.com/prplrs/source"
+destinationUrl = "https://github.com/prplrs/destination"
 
 core.workflow(
     name = "yeet",
@@ -23,7 +23,7 @@ core.workflow(
 
     # author information
     mode = "ITERATIVE",
-    authoring = authoring.pass_thru(default = "PRPL <opensource@purplerockscissors.com>"),
+    authoring = authoring.pass_thru(default = "PRPL <email@example.com>"),
 
     # move the contents of the examples/ directory to the root
     transformations = [
