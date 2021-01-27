@@ -1,0 +1,32 @@
+sourceUrl = "https://github.com/prplrs/test-src"
+destinationUrl = "https://github.com/prplrs/test-dest"
+
+core.workflow(
+    name = "yeet",
+
+    # pull from this git repo
+    origin = git.origin(
+        url = sourceUrl,
+        ref = "master",
+    ),
+
+    # push to this git repo
+    destination = git.destination(
+        url = destinationUrl,
+        fetch = "master",
+        push = "master",
+    ),
+
+    # only allow files in the examples/ directory
+    # exclude anything marked as internal: ex: readme.intern.md
+    origin_files = glob(["examples/**"], exclude = ["*.intern.*"]),
+
+    # author information
+    mode = "ITERATIVE",
+    authoring = authoring.pass_thru(default = "PRPL <opensource@purplerockscissors.com>"),
+
+    # move the contents of the examples/ directory to the root
+    transformations = [
+        core.move("examples", ""),
+    ]
+)
